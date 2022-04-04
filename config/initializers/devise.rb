@@ -278,7 +278,7 @@ Devise.setup do |config|
     name: 'google',
     access_type: 'offline',
     image_aspect_ratio: 'square',
-    scope: 'email',
+    scope: 'email,profile',
     strategy_class: OmniAuth::Strategies::GoogleOauth2
   )
 

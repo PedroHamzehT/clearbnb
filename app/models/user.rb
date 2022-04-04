@@ -5,17 +5,12 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:google]
 
   def self.from_omniauth(access_token)
-    data = access_token.info
-    user = User.where(email: data['email']).first
+    where(provider: access_token.provider, uid: access_token.uid).first_or_create do |user|
+      user.name = access_token.info.name
+      user.email = access_token.info.email
+      user.password = Devise.friendly_token[0, 20]
 
-    unless user
-      user = User.create(
-        email: data['email'],
-        password: Devise.friendly_token[0,20]
-      )
+      user.skip_confirmation!
     end
-
-    user.skip_confirmation!
-    user
   end
 end
