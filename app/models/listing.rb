@@ -20,5 +20,10 @@
 #  updated_at    :datetime         not null
 #
 class Listing < ApplicationRecord
-  belongs_to :host
+  belongs_to :host, class_name: 'User'
+
+  validates :title, presence: true
+  validates :max_guests, numericality: { greater_than: 0, less_than: 101 }
+
+  enum status: %i[draft published]
 end
