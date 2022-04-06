@@ -5,21 +5,21 @@
   <input type="hidden" name="_method" value="PUT">
 
   <div class="field">
-    <label for="title"></label>
+    <label for="title">Title</label>
     <br>
     <input type="text" name="listing[title]" id="title" value="<%= @listing.title %>">
   </div>
 
   <br>
   <div class="field">
-    <label for="about"></label>
+    <label for="about">About</label>
     <br>
     <textarea name="listing[about]" id="about" cols="30" rows="10"><%= @listing.about %></textarea>
   </div>
 
   <br>
   <div class="field">
-    <label for="max_guests"></label>
+    <label for="max_guests">Max guests</label>
     <br>
     <input type="text" name="listing[max_guests]" id="max_guests" value="<%= @listing.max_guests %>">
   </div>
