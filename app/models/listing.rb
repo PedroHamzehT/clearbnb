@@ -25,5 +25,5 @@ class Listing < ApplicationRecord
   validates :title, presence: true
   validates :max_guests, numericality: { greater_than: 0, less_than: 101 }
 
-  enum status: %i[draft published]
+  enum status: %i[draft published archived]
 end

@@ -1,0 +1,29 @@
+<h1>Host::Listings#index</h1>
+<p>Find me in app/views/host/listings/index.html.erb</p>
+
+<%= link_to 'New listing', new_host_listing_path %>
+
+<table>
+  <thead>
+    <tr>
+      <% listing_fields.keys.each do |field| %>
+        <th><%= field %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @listings.each do |listing| %>
+      <tr>
+        <% listing_fields.keys.each do |field| %>
+          <td><%= listing[field] %></td>
+        <% end %>
+
+        <td>
+          <%= link_to 'Show', host_listing_path(listing) %>
+          <%= link_to 'Edit', edit_host_listing_path(listing) %>
+          <%= link_to 'Remove', host_listing_path(listing), method: :delete, data: { confirm: 'Are you sure?' }  %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
