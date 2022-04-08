@@ -1,0 +1,22 @@
+version: '3.9'
+services:
+  web:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - 3000:3000
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres
+    volumes:
+      - pg_db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5434:5432
+
+volumes:
+  pg_db:
