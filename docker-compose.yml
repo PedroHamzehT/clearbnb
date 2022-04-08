@@ -17,6 +17,14 @@ services:
       - POSTGRES_PASSWORD=postgres
     ports:
       - 5434:5432
+  
+  webpack:
+    build: .
+    volumes:
+      - .:/app
+    depends_on:
+      - web
+    command: bin/webpack-dev-server
 
 volumes:
   pg_db:
